@@ -1,29 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Задание 4 - Ваша фамилия и инициалы</title>
-</head>
-<body>
-    <h1>Пример работы с датами и калькулятором</h1>
+    <title>Document</title>
+    <style>
+        div {
+            margin-top: 20px;
+        }
 
+        span[id="res"] {
+            color: brown;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
     <div>
-        <h2>Расчет количества месяцев</h2>
+        <h1>Расчет количества месяцев</h1>
         <label for="dateInput">Выберите дату: </label>
         <input type="date" id="dateInput">
         <button onclick="calculateMonths()">Рассчитать</button>
         <p id="monthsOutput"></p>
     </div>
 
+    <h2>
+        First program in JS
+    </h2>
     <div>
-        <h2>Калькулятор</h2>
-        <input type="number" id="num1" placeholder="Число 1">
-        <input type="number" id="num2" placeholder="Число 2">
-        <button onclick="calculate('power')">Возвести в степень</button>
-        <button onclick="calculate('root')">Взять корень</button>
-        <p id="calcOutput"></p>
+        <label for="oper1">Введите первое число</label>
+        <input id="oper1" type="number" value="0" onchange="calc()">
     </div>
+    <div>
+        <label for="oper2">Введите второе число</label>
+        <input id="oper2" type="number" value="0" onchange="calc()">
+    </div>
+    <div>
+        <select id="operation" onchange="calc()">
+            <option>Сложить</option>
+            <option>Вычесть</option>
+            <option>Умножить</option>
+            <option>Разделить</option>
+            <option>Степень</option>
+            <option>Квадратный корень</option>
+        </select>
+    </div>
+    <p>Результат:<span id="res"></span></p>
 
     <script>
         function calculateMonths() {
@@ -38,19 +62,41 @@
             document.getElementById('monthsOutput').innerText = `Количество месяцев: ${months}`;
         }
 
-        function calculate(operation) {
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const num2 = parseFloat(document.getElementById('num2').value);
-            let result;
-
-            if (operation === 'power') {
-                result = Math.pow(num1, num2);
-            } else if (operation === 'root') {
-                result = Math.pow(num1, 1 / num2);
+        function calc() {
+            let x = parseInt(document.getElementById("oper1").value);
+            let y = parseInt(document.getElementById("oper2").value);
+            let result = 0;
+            let operation = document.getElementById("operation").value;
+            switch (operation) {
+                case "Сложить":
+                    result = x + y;
+                    break;
+                case "Вычесть":
+                    result = x - y;
+                    break;
+                case "Умножить":
+                    result = x * y;
+                    break;
+                case "Разделить":
+                    result = x / y;
+                    break;
+                case "Степень":
+                    result = Math.pow(x, y);
+                    break;
+                case "Квадратный корень":
+                    result = Math.sqrt(x);
+                    break;
+                default:
+                    result = "Error!";
+                    break;
             }
 
-            document.getElementById('calcOutput').innerText = `Результат: ${result}`;
+            if (result % 1 != 0) {
+                result = result.toFixed(2);
+            }
+            document.getElementById('res').innerText = result;
         }
     </script>
 </body>
+
 </html>
