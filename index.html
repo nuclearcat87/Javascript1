@@ -14,18 +14,34 @@
             color: brown;
             font-size: 2rem;
         }
+        .calendarm {
+            margin-right: 55%;
+            margin-left: 5%;
+            margin-top: 10%;
+            margin-bottom: 10%;
+            background-color: rgb(31, 92, 172);
+            
+        }
+        .monthh {
+            margin-right: 55%;
+            margin-left: 5%;
+            margin-top: 10%;
+            margin-bottom: 10%;
+            background-color: rgb(31, 92, 172);
+
+        }
     </style>
 </head>
 
 <body>
-    <div>
+    <div class="calendarm">
         <h1>Расчет количества месяцев</h1>
         <label for="dateInput">Выберите дату: </label>
         <input type="date" id="dateInput">
         <button onclick="calculateMonths()">Рассчитать</button>
         <p id="monthsOutput"></p>
     </div>
-
+<div class="monthh">
     <h2>
         Многофункциональный калькулятор 
     </h2>
@@ -47,6 +63,7 @@
             <option>Квадратный корень</option>
         </select>
     </div>
+</div>
     <p>Результат:<span id="res"></span></p>
 
     <script>
